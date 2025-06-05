@@ -1,0 +1,44 @@
+name: Manual Variables
+on:
+  push:
+    branches: main
+
+  pull_request:
+    branches: main
+
+jobs:
+  check:
+    name: Multi Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Cargo Get
+        id: cargo-get
+        uses: nicolaiunrein/cargo-get@master
+        with:
+          subcommand: package.name
+
+      - name: Manual run
+        id: metadata
+        run: |
+          echo "package_name=$(cargo get package.name)" >> $GITHUB_OUTPUT
+          echo "package_version=$(cargo get package.version)" >> $GITHUB_OUTPUT
+          echo "package_edition=$(cargo get package.edition)" >> $GITHUB_OUTPUT
+
+      - name: Check variables
+        run: |
+          if [ ${{ steps.metadata.outputs.package_name}} != "app" ]; then
+            echo "Unexpected name"
+            exit 1
+          fi
+          if [ ${{ steps.metadata.outputs.package_version }} != "0.1.0" ]; then
+            echo "Unexpected version"
+            exit 1
+          fi
+
+          if [ "${{ steps.metadata.outputs.package_edition }}" != "2024" ]; then
+            echo "Unexpected edition"
+            exit 1
+          fi

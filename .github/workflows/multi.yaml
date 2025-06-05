@@ -1,0 +1,38 @@
+name: Automatic variables
+on:
+  push:
+    branches: main
+
+  pull_request:
+    branches: main
+
+jobs:
+  check:
+    name: Multi Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get package name
+        id: name
+        uses: nicolaiunrein/cargo-get@master
+        with:
+          subcommand: package.name
+
+      - name: Get package version
+        id: version
+        uses: nicolaiunrein/cargo-get@master
+        with:
+          subcommand: package.version
+
+      - name: Check output
+        run: |
+          if [ ${{ steps.name.outputs.metadata }} != "app" ]; then
+            echo "Unexpected name"
+            exit 1
+          fi
+          if [ ${{ steps.version.outputs.metadata }} != "0.1.0" ]; then
+            echo "Unexpected version"
+            exit 1
+          fi
