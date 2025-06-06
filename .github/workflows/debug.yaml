@@ -23,7 +23,7 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          cargo $(get all --output-format github-action) >> $GITHUB_OUTPUT
+          $(cargo get all --output-format github-action) >> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
