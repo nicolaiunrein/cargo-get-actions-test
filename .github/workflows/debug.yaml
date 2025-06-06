@@ -1,0 +1,26 @@
+name: Debug
+on:
+  push:
+    branches: main
+
+  pull_request:
+    branches: main
+
+jobs:
+  check:
+    name: Multi Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Cargo Get
+        id: cargo-get
+        uses: nicolaiunrein/cargo-get@master
+        with:
+          subcommand: package.name
+
+      - name: Manual run
+        id: metadata
+        run: |
+          echo $GITHUB_OUTPUT
