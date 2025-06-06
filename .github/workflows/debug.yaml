@@ -16,9 +16,8 @@ jobs:
 
       - name: Install Cargo Get
         id: cargo-get
-        uses: nicolaiunrein/cargo-get@feat/all-values
-        with:
-          subcommand: package.name
+        run: |
+          cargo install cargo-get --git https://github.com/nicolaiunrein/cargo-get --branch "feat/all-values"
 
       - name: Manual run
         id: metadata
