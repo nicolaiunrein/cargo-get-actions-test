@@ -34,6 +34,10 @@ jobs:
           echo "${{ steps.metadata.outputs.package_version}}"
           echo "-----------------------------------------"
 
+          echo "Package Categories"
+          echo "${{ steps.metadata.outputs.package_categories}}"
+          echo "-----------------------------------------"
+
           echo "Package Keywords"
           echo "${{ steps.metadata.outputs.package_keywords}}"
           echo "-----------------------------------------"
