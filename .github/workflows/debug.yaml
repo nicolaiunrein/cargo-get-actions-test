@@ -23,28 +23,54 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          echo 'package_name<<<EOFcargo-getEOF
-          package_edition<<<EOF2018EOF
-          package_version<<<EOF1.3.0EOF
-          package_authors<<<EOFNicolai Unrein <n.unrein@gmail.com>EOF
-          package_description<<<EOFCargo plugin to easily query information from Cargo.toml filesEOF
-          package_readme<<<EOFREADME.mdEOF
-          package_keywords<<<EOFbinary
+          echo 'package_name<<<EOF
+          cargo-get
+          EOF
+          package_edition<<<EOF
+          2018
+          EOF
+          package_version<<<EOF
+          1.3.0
+          EOF
+          package_authors<<<EOF
+          Nicolai Unrein <n.unrein@gmail.com>
+          EOF
+          package_description<<<EOF
+          Cargo plugin to easily query information from Cargo.toml files
+          EOF
+          package_readme<<<EOF
+          README.md
+          EOF
+          package_keywords<<<EOF
+          binary
           cargo
           cli
           dev-tools
-          queryEOF
-          package_categories<<<EOFcommand-line-utilities
+          query
+          EOF
+          package_categories<<<EOF
+          command-line-utilities
           config
           development-tools
           development-tools::cargo-plugins
-          parsingEOF
-          package_exclude<<<EOFEOF
-          package_include<<<EOFsrc/**/*
-          README.mdEOF
-          package_license<<<EOFApache-2.0/MITEOF
-          package_repository<<<EOFhttps://github.com/nicolaiunrein/cargo-getEOF
-          package_publish<<<EOFtrueEOF' >> $GITHUB_OUTPUT
+          parsing
+          EOF
+          package_exclude<<<EOF
+
+          EOF
+          package_include<<<EOF
+          src/**/*
+          README.md
+          EOF
+          package_license<<<EOF
+          Apache-2.0/MIT
+          EOF
+          package_repository<<<EOF
+          https://github.com/nicolaiunrein/cargo-get
+          EOF
+          package_publish<<<EOF
+          true
+          EOF' >>> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
