@@ -27,11 +27,11 @@ jobs:
           echo "val1" >> $GITHUB_OUTPUT
           echo "val2" >> $GITHUB_OUTPUT
           echo "val3" >> $GITHUB_OUTPUT
-          echo '>>EOF' >> $GITHUB_OUTPUT
-          echo "my_var_2=test" >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+          # echo "my_var_2=test" >> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
           echo "${{ steps.metadata.outputs.my_var}}"
           echo "-----------------------------------------"
-          echo "${{ steps.metadata.outputs.my_var_2}}"
+          # echo "${{ steps.metadata.outputs.my_var_2}}"
