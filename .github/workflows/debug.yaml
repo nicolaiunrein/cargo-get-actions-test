@@ -23,4 +23,11 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          echo $GITHUB_OUTPUT
+          multiline=$'my_var=hello\nworld\nmy_var_2=test'
+          echo "$multiline" >> $GITHUB_OUTPUT
+
+      - name: Check variables
+        run: |
+          echo "${{ steps.metadata.outputs.my_var}}"
+          echo "-----------------------------------------"
+          echo "${{ steps.metadata.outputs.my_var_2}}"
