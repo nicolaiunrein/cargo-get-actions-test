@@ -15,14 +15,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Cargo Get
-        id: cargo-get
-        run: |
-          cargo install cargo-get --git https://github.com/nicolaiunrein/cargo-get --branch "feat/all-values"
-
-      - name: Manual run
         id: metadata
-        run: |
-          echo "$(cargo get all --output-format github-action)" >> $GITHUB_OUTPUT
+        uses: nicolaiunrein/cargo-get@master
 
       - name: Check variables
         run: |
