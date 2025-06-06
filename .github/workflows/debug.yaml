@@ -23,15 +23,39 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          echo 'my_var<<EOF' >> $GITHUB_OUTPUT
-          echo "val1" >> $GITHUB_OUTPUT
-          echo "val2" >> $GITHUB_OUTPUT
-          echo "val3" >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
-          # echo "my_var_2=test" >> $GITHUB_OUTPUT
+          echo "package_name<<<EOFcargo-getEOF
+          package_edition<<<EOF2018EOF
+          package_version<<<EOF1.3.0EOF
+          package_authors<<<EOFNicolai Unrein <n.unrein@gmail.com>EOF
+          package_description<<<EOFCargo plugin to easily query information from Cargo.toml filesEOF
+          package_readme<<<EOFREADME.mdEOF
+          package_keywords<<<EOFbinary
+          cargo
+          cli
+          dev-tools
+          queryEOF
+          package_categories<<<EOFcommand-line-utilities
+          config
+          development-tools
+          development-tools::cargo-plugins
+          parsingEOF
+          package_exclude<<<EOFEOF
+          package_include<<<EOFsrc/**/*
+          README.mdEOF
+          package_license<<<EOFApache-2.0/MITEOF
+          package_repository<<<EOFhttps://github.com/nicolaiunrein/cargo-getEOF
+          package_publish<<<EOFtrueEOF" >> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
-          echo "${{ steps.metadata.outputs.my_var}}"
+          echo "Package Name"
+          echo "${{ steps.metadata.outputs.package_name}}"
           echo "-----------------------------------------"
-          # echo "${{ steps.metadata.outputs.my_var_2}}"
+
+          echo "Package Version"
+          echo "${{ steps.metadata.outputs.package_version}}"
+          echo "-----------------------------------------"
+
+          echo "Package Keywords"
+          echo "${{ steps.metadata.outputs.package_keywords}}"
+          echo "-----------------------------------------"
