@@ -23,8 +23,12 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          multiline=$'my_var=hello\nworld\nmy_var_2=test'
-          echo "$multiline" >> $GITHUB_OUTPUT
+          echo 'my_var<<EOF' >> $GITHUB_OUTPUT
+          echo "val1" >> $GITHUB_OUTPUT
+          echo "val2" >> $GITHUB_OUTPUT
+          echo "val3" >> $GITHUB_OUTPUT
+          echo '>>EOF' >> $GITHUB_OUTPUT
+          echo "my_var_2=test" >> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
