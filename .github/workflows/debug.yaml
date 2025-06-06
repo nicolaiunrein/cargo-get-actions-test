@@ -23,7 +23,7 @@ jobs:
       - name: Manual run
         id: metadata
         run: |
-          echo "package_name<<<EOFcargo-getEOF
+          echo 'package_name<<<EOFcargo-getEOF
           package_edition<<<EOF2018EOF
           package_version<<<EOF1.3.0EOF
           package_authors<<<EOFNicolai Unrein <n.unrein@gmail.com>EOF
@@ -44,7 +44,7 @@ jobs:
           README.mdEOF
           package_license<<<EOFApache-2.0/MITEOF
           package_repository<<<EOFhttps://github.com/nicolaiunrein/cargo-getEOF
-          package_publish<<<EOFtrueEOF" >> $GITHUB_OUTPUT
+          package_publish<<<EOFtrueEOF' >> $GITHUB_OUTPUT
 
       - name: Check variables
         run: |
